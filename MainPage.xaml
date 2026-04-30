@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OopMaui.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Border Padding="15"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                Margin="10">
+
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="🎮 SYMBOL GAME"
+                       FontSize="22"
+                       HorizontalOptions="Center"
+                       Style="{DynamicResource GlobalLabelStyle}"/>
+
+                <Picker x:Name="ThemePicker"
+                        Title="Выбери тему"
+                        Style="{DynamicResource GlobalEntryStyle}"/>
+
+                <Entry x:Name="SymbolEntry"
+                       Placeholder="Введите символ"
+                       Style="{DynamicResource GlobalEntryStyle}"/>
+
+                <Slider x:Name="DurationSlider"
+                        Minimum="5000"
+                        Maximum="60000"
+                        Value="20000"/>
+
+                <Button Text="START"
+                        Clicked="OnStartClicked"
+                        Style="{DynamicResource GlobalButtonStyle}"/>
+
+                <Label x:Name="CounterLabel"
+                       Text="Appear: 0"
+                       Style="{DynamicResource GlobalLabelStyle}"/>
+
+                <Label x:Name="ScoreLabel"
+                       Text="Score: 0"
+                       Style="{DynamicResource GlobalLabelStyle}"/>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <AbsoluteLayout x:Name="RootLayout">
+
+                <Label x:Name="SymbolLabel"
+                       IsVisible="False"
+                       FontSize="50"
+                       Style="{DynamicResource GlobalLabelStyle}">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSymbolTapped"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+            </AbsoluteLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>
