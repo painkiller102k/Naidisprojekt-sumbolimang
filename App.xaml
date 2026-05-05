@@ -5,18 +5,13 @@
              x:Class="OopMaui.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Style x:Key="GlobalLabelStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="TextColor" Value="Black" />
-            </Style>
-            <Style x:Key="GlobalEntryStyle" TargetType="Entry">
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="TextColor" Value="Black" />
-            </Style>
-            <Style x:Key="GlobalButtonStyle" TargetType="Button">
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="TextColor" Value="Black" />
-            </Style>
+
+            <Color x:Key="PageBg">#0F0F14</Color>
+            <Color x:Key="CardBg">#1C1C26</Color>
+            <Color x:Key="ButtonBg">#2A2A38</Color>
+            <Color x:Key="TextColor">White</Color>
+
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>

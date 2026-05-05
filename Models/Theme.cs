@@ -1,4 +1,5 @@
 ﻿namespace OopMaui.Models;
+using Microsoft.Maui.Controls;
 
 public class Theme
 {
@@ -7,50 +8,32 @@ public class Theme
     public Color TextColor { get; set; }
     public string FontFamily { get; set; }
 
-    public Theme(string name, Color background, Color text, string fontFamily)
+    public Theme(string name, Color bg, Color text, string font)
     {
         Name = name;
-        BackgroundColor = background;
+        BackgroundColor = bg;
         TextColor = text;
-        FontFamily = fontFamily;
+        FontFamily = font;
     }
 
     public override string ToString() => Name;
 
     public void Apply(ContentPage page)
     {
-        // 🔥 ВАЖНО: фон страницы
         page.BackgroundColor = BackgroundColor;
 
-        // 🔥 общий ресурс для фона (используется XAML)
-        Application.Current.Resources["PageBackgroundColor"] = BackgroundColor;
-        Application.Current.Resources["GlobalTextColor"] = TextColor;
-
-        Application.Current.Resources["GlobalLabelStyle"] = new Style(typeof(Label))
+        foreach (var view in page.GetVisualTreeDescendants())
         {
-            Setters =
+            if (view is Label label)
             {
-                new Setter { Property = Label.TextColorProperty, Value = TextColor },
-                new Setter { Property = Label.FontFamilyProperty, Value = FontFamily }
+                label.TextColor = TextColor;
+                label.FontFamily = FontFamily;
             }
-        };
 
-        Application.Current.Resources["GlobalEntryStyle"] = new Style(typeof(Entry))
-        {
-            Setters =
+            if (view is Button button)
             {
-                new Setter { Property = Entry.TextColorProperty, Value = TextColor },
-                new Setter { Property = Entry.FontFamilyProperty, Value = FontFamily }
+                button.TextColor = TextColor;
             }
-        };
-
-        Application.Current.Resources["GlobalButtonStyle"] = new Style(typeof(Button))
-        {
-            Setters =
-            {
-                new Setter { Property = Button.TextColorProperty, Value = TextColor },
-                new Setter { Property = Button.FontFamilyProperty, Value = FontFamily }
-            }
-        };
+        }
     }
 }

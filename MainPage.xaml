@@ -1,67 +1,113 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OopMaui.MainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+             BackgroundColor="{DynamicResource PageBg}">
 
-    <Grid RowDefinitions="Auto,*">
+    <VerticalStackLayout Padding="20" Spacing="18">
 
-        <Border Padding="15"
-                StrokeShape="RoundRectangle 20"
-                BackgroundColor="{DynamicResource PageBackgroundColor}"
-                Margin="10">
+        <Frame BackgroundColor="{DynamicResource CardBg}"
+               CornerRadius="28"
+               Padding="18"
+               HasShadow="True">
 
-            <VerticalStackLayout Spacing="12">
-
-                <Label Text="🎮 SYMBOL GAME"
-                       FontSize="22"
-                       HorizontalOptions="Center"
-                       Style="{DynamicResource GlobalLabelStyle}"/>
-
-                <Picker x:Name="ThemePicker"
-                        Title="Выбери тему"
-                        Style="{DynamicResource GlobalEntryStyle}"/>
-
-                <Entry x:Name="SymbolEntry"
-                       Placeholder="Введите символ"
-                       Style="{DynamicResource GlobalEntryStyle}"/>
-
-                <Slider x:Name="DurationSlider"
-                        Minimum="5000"
-                        Maximum="60000"
-                        Value="20000"/>
-
-                <Button Text="START"
-                        Clicked="OnStartClicked"
-                        Style="{DynamicResource GlobalButtonStyle}"/>
-
-                <Label x:Name="CounterLabel"
-                       Text="Appear: 0"
-                       Style="{DynamicResource GlobalLabelStyle}"/>
+            <VerticalStackLayout Spacing="6">
 
                 <Label x:Name="ScoreLabel"
                        Text="Score: 0"
-                       Style="{DynamicResource GlobalLabelStyle}"/>
+                       FontSize="30"
+                       TextColor="{DynamicResource TextColor}"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Memory Challenge"
+                       FontSize="13"
+                       TextColor="{DynamicResource TextColor}"
+                       Opacity="0.7"
+                       HorizontalOptions="Center"/>
 
             </VerticalStackLayout>
-        </Border>
+        </Frame>
 
-        <Grid Grid.Row="1">
-            <AbsoluteLayout x:Name="RootLayout">
+        <Frame BackgroundColor="{DynamicResource CardBg}"
+               CornerRadius="28"
+               Padding="12">
 
-                <Label x:Name="SymbolLabel"
-                       IsVisible="False"
-                       FontSize="50"
-                       Style="{DynamicResource GlobalLabelStyle}">
+            <HorizontalStackLayout Spacing="12"
+                                   HorizontalOptions="Center">
 
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnSymbolTapped"/>
-                    </Label.GestureRecognizers>
+                <Button Text="🐶"
+                        Clicked="Animals"
+                        FontSize="20"
+                        BackgroundColor="{DynamicResource ButtonBg}"
+                        TextColor="{DynamicResource TextColor}"
+                        CornerRadius="18"
+                        WidthRequest="65"
+                        HeightRequest="55"/>
 
-                </Label>
+                <Button Text="🍎"
+                        Clicked="Fruits"
+                        FontSize="20"
+                        BackgroundColor="{DynamicResource ButtonBg}"
+                        TextColor="{DynamicResource TextColor}"
+                        CornerRadius="18"
+                        WidthRequest="65"
+                        HeightRequest="55"/>
 
-            </AbsoluteLayout>
-        </Grid>
+                <Button Text="😀"
+                        Clicked="Faces"
+                        FontSize="20"
+                        BackgroundColor="{DynamicResource ButtonBg}"
+                        TextColor="{DynamicResource TextColor}"
+                        CornerRadius="18"
+                        WidthRequest="65"
+                        HeightRequest="55"/>
 
-    </Grid>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame BackgroundColor="{DynamicResource CardBg}"
+               CornerRadius="28"
+               Padding="12">
+
+            <HorizontalStackLayout Spacing="12"
+                                   HorizontalOptions="Center">
+
+                <Button Text="Light"
+                        Clicked="Light"
+                        BackgroundColor="{DynamicResource ButtonBg}"
+                        TextColor="{DynamicResource TextColor}"
+                        CornerRadius="18"
+                        WidthRequest="80"/>
+
+                <Button Text="Dark"
+                        Clicked="Dark"
+                        BackgroundColor="{DynamicResource ButtonBg}"
+                        TextColor="{DynamicResource TextColor}"
+                        CornerRadius="18"
+                        WidthRequest="80"/>
+
+                <Button Text="Color"
+                        Clicked="Color"
+                        BackgroundColor="{DynamicResource ButtonBg}"
+                        TextColor="{DynamicResource TextColor}"
+                        CornerRadius="18"
+                        WidthRequest="80"/>
+
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- area -->
+        <Frame BackgroundColor="{DynamicResource CardBg}"
+               CornerRadius="32"
+               Padding="18"
+               HasShadow="True">
+
+            <Grid x:Name="GameGrid"
+                  RowSpacing="12"
+                  ColumnSpacing="12"
+                  HorizontalOptions="Center"/>
+
+        </Frame>
+
+    </VerticalStackLayout>
 </ContentPage>

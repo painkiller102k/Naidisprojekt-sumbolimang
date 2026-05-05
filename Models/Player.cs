@@ -3,23 +3,11 @@
 public class Player
 {
     public string Name { get; set; }
-    public string Symbol { get; set; }
-    public int Score { get; private set; }
+    public int Score { get; set; }
 
-    public Player(string name, string symbol)
+    public Player(string name)
     {
         Name = name;
-        Symbol = symbol;
-        Score = 0;
-    }
-
-    public void AddPoint()
-    {
-        Score++;
-    }
-
-    public void ResetScore()
-    {
         Score = 0;
     }
 }

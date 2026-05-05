@@ -2,62 +2,81 @@
 
 public class Game
 {
-    public Player Player { get; private set; }
-    public Theme Theme { get; private set; }
-    public double DurationMs { get; private set; }
+    public Player Player { get; set; }
+    public List<Card> Cards { get; set; } = new();
 
-    public event Action<string>? OnShowSymbol;
-    public event Action? OnHideSymbol;
-    public event Action<int>? OnScoreChanged;
-    public event Action<int>? OnAppearChanged;
-    public event Action? OnGameFinished;
+    Card first;
+    Card second;
+    bool busy;
 
-    private bool isRunning;
-    private int appearCount;
-    private Random rng = new();
-
-    public Game(Player player, Theme theme, double durationMs)
+    public Game(Player player)
     {
         Player = player;
-        Theme = theme;
-        DurationMs = durationMs;
     }
 
-    public async void Start()
+    public async Task Pick(Card card)
     {
-        isRunning = true;
+        if (busy || card.IsMatched || card.IsFlipped)
+            return;
 
-        Player.ResetScore();
-        appearCount = 0;
+        busy = true;
 
-        var start = DateTime.Now;
+        await Open(card);
 
-        while (isRunning && (DateTime.Now - start).TotalMilliseconds < DurationMs)
+        if (first == null)
         {
-            appearCount++;
-            OnAppearChanged?.Invoke(appearCount);
-
-            OnShowSymbol?.Invoke(Player.Symbol);
-
-            await Task.Delay(500);
-
-            OnHideSymbol?.Invoke();
-
-            await Task.Delay(rng.Next(500, 1500));
+            first = card;
+            busy = false;
+            return;
         }
 
-        isRunning = false;
-        OnGameFinished?.Invoke();
+        second = card;
+
+        await Task.Delay(500);
+
+        if (first.Value == second.Value)
+        {
+            Player.Score++;
+
+            first.IsMatched = true;
+            second.IsMatched = true;
+
+            await Pulse(first.Button);
+            await Pulse(second.Button);
+        }
+        else
+        {
+            Player.Score--;
+
+            await Close(first);
+            await Close(second);
+        }
+
+        first = null;
+        second = null;
+        busy = false;
     }
 
-    public void Stop()
+
+    async Task Open(Card c)
     {
-        isRunning = false;
+        await c.Button.ScaleToAsync(0.2, 80);
+        c.IsFlipped = true;
+        c.Button.Text = c.Value;
+        await c.Button.ScaleToAsync(1, 80);
     }
 
-    public void RegisterHit()
+    async Task Close(Card c)
     {
-        Player.AddPoint();
-        OnScoreChanged?.Invoke(Player.Score);
+        await c.Button.ScaleToAsync(0.2, 80);
+        c.IsFlipped = false;
+        c.Button.Text = "❓";
+        await c.Button.ScaleToAsync(1, 80);
+    }
+
+    async Task Pulse(Button btn)
+    {
+        await btn.ScaleToAsync(1.2, 100);
+        await btn.ScaleToAsync(1, 100);
     }
 }
