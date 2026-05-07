@@ -5,6 +5,7 @@
 
     <VerticalStackLayout Padding="20" Spacing="18">
 
+        <!-- HEADER -->
         <Frame BackgroundColor="{DynamicResource CardBg}"
                CornerRadius="28"
                Padding="18"
@@ -13,13 +14,13 @@
             <VerticalStackLayout Spacing="6">
 
                 <Label x:Name="ScoreLabel"
-                       Text="Score: 0"
+                       Text="Punktid: 0"
                        FontSize="30"
                        TextColor="{DynamicResource TextColor}"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"/>
 
-                <Label Text="Memory Challenge"
+                <Label Text="Mälumäng"
                        FontSize="13"
                        TextColor="{DynamicResource TextColor}"
                        Opacity="0.7"
@@ -28,84 +29,128 @@
             </VerticalStackLayout>
         </Frame>
 
+        <!-- ICONS -->
         <Frame BackgroundColor="{DynamicResource CardBg}"
                CornerRadius="28"
-               Padding="12">
+               Padding="14">
 
-            <HorizontalStackLayout Spacing="12"
-                                   HorizontalOptions="Center">
+            <VerticalStackLayout Spacing="10">
 
-                <Button Text="🐶"
-                        Clicked="Animals"
-                        FontSize="20"
-                        BackgroundColor="{DynamicResource ButtonBg}"
-                        TextColor="{DynamicResource TextColor}"
-                        CornerRadius="18"
-                        WidthRequest="65"
-                        HeightRequest="55"/>
+                <Label Text="🎮 Vali sümbolid"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextColor}"
+                       HorizontalOptions="Center"/>
 
-                <Button Text="🍎"
-                        Clicked="Fruits"
-                        FontSize="20"
-                        BackgroundColor="{DynamicResource ButtonBg}"
-                        TextColor="{DynamicResource TextColor}"
-                        CornerRadius="18"
-                        WidthRequest="65"
-                        HeightRequest="55"/>
+                <Label Text="Vali mängu sümbolite komplekt"
+                       FontSize="12"
+                       TextColor="{DynamicResource TextColor}"
+                       Opacity="0.6"
+                       HorizontalOptions="Center"/>
 
-                <Button Text="😀"
-                        Clicked="Faces"
-                        FontSize="20"
-                        BackgroundColor="{DynamicResource ButtonBg}"
-                        TextColor="{DynamicResource TextColor}"
-                        CornerRadius="18"
-                        WidthRequest="65"
-                        HeightRequest="55"/>
+                <HorizontalStackLayout Spacing="12"
+                                       HorizontalOptions="Center">
 
-            </HorizontalStackLayout>
+                    <Button Text="🐶"
+                            Clicked="Animals"
+                            FontSize="20"
+                            BackgroundColor="{DynamicResource ButtonBg}"
+                            TextColor="{DynamicResource TextColor}"
+                            CornerRadius="18"
+                            WidthRequest="65"
+                            HeightRequest="55"/>
+
+                    <Button Text="🍎"
+                            Clicked="Fruits"
+                            FontSize="20"
+                            BackgroundColor="{DynamicResource ButtonBg}"
+                            TextColor="{DynamicResource TextColor}"
+                            CornerRadius="18"
+                            WidthRequest="65"
+                            HeightRequest="55"/>
+
+                    <Button Text="😀"
+                            Clicked="Faces"
+                            FontSize="20"
+                            BackgroundColor="{DynamicResource ButtonBg}"
+                            TextColor="{DynamicResource TextColor}"
+                            CornerRadius="18"
+                            WidthRequest="65"
+                            HeightRequest="55"/>
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
         </Frame>
 
+        <!-- THEMES -->
         <Frame BackgroundColor="{DynamicResource CardBg}"
                CornerRadius="28"
-               Padding="12">
+               Padding="14">
 
-            <HorizontalStackLayout Spacing="12"
-                                   HorizontalOptions="Center">
+            <VerticalStackLayout Spacing="10">
 
-                <Button Text="Light"
-                        Clicked="Light"
-                        BackgroundColor="{DynamicResource ButtonBg}"
-                        TextColor="{DynamicResource TextColor}"
-                        CornerRadius="18"
-                        WidthRequest="80"/>
+                <Label Text="🎨 Vali teema"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextColor}"
+                       HorizontalOptions="Center"/>
 
-                <Button Text="Dark"
-                        Clicked="Dark"
-                        BackgroundColor="{DynamicResource ButtonBg}"
-                        TextColor="{DynamicResource TextColor}"
-                        CornerRadius="18"
-                        WidthRequest="80"/>
+                <Label Text="Muuda mängu värve ja stiili"
+                       FontSize="12"
+                       TextColor="{DynamicResource TextColor}"
+                       Opacity="0.6"
+                       HorizontalOptions="Center"/>
 
-                <Button Text="Color"
-                        Clicked="Color"
-                        BackgroundColor="{DynamicResource ButtonBg}"
-                        TextColor="{DynamicResource TextColor}"
-                        CornerRadius="18"
-                        WidthRequest="80"/>
+                <HorizontalStackLayout Spacing="12"
+                                       HorizontalOptions="Center">
 
-            </HorizontalStackLayout>
+                    <Button Text="Hele"
+                            Clicked="Light"
+                            BackgroundColor="{DynamicResource ButtonBg}"
+                            TextColor="{DynamicResource TextColor}"
+                            CornerRadius="18"
+                            WidthRequest="80"/>
+
+                    <Button Text="Tume"
+                            Clicked="Dark"
+                            BackgroundColor="{DynamicResource ButtonBg}"
+                            TextColor="{DynamicResource TextColor}"
+                            CornerRadius="18"
+                            WidthRequest="80"/>
+
+                    <Button Text="Värviline"
+                            Clicked="Color"
+                            BackgroundColor="{DynamicResource ButtonBg}"
+                            TextColor="{DynamicResource TextColor}"
+                            CornerRadius="18"
+                            WidthRequest="90"/>
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
         </Frame>
 
-        <!-- area -->
+        <!-- GAME AREA -->
         <Frame BackgroundColor="{DynamicResource CardBg}"
                CornerRadius="32"
                Padding="18"
                HasShadow="True">
 
-            <Grid x:Name="GameGrid"
-                  RowSpacing="12"
-                  ColumnSpacing="12"
-                  HorizontalOptions="Center"/>
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="🧩 Mänguväli"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextColor}"
+                       HorizontalOptions="Center"/>
+
+                <Grid x:Name="GameGrid"
+                      RowSpacing="12"
+                      ColumnSpacing="12"
+                      HorizontalOptions="Center"/>
+
+            </VerticalStackLayout>
 
         </Frame>
 

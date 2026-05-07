@@ -20,16 +20,16 @@ public partial class MainPage : ContentPage
 
     void StartGame()
     {
-        GameGrid.Children.Clear();
-        game = new Game(player);
+        GameGrid.Children.Clear(); // clear cards
+        game = new Game(player); 
 
-        var values = IconPresets.Get()
-            .OrderBy(x => Guid.NewGuid())
+        var values = IconPresets.Get() // võta sümbolid
+            .OrderBy(x => Guid.NewGuid()) // random elements
             .ToList();
 
-        for (int i = 0; i < values.Count; i++)
+        for (int i = 0; i < values.Count; i++) 
         {
-            var card = new Card(values[i]);
+            var card = new Card(values[i]); // uus card
 
             var btn = new Button
             {
@@ -46,9 +46,8 @@ public partial class MainPage : ContentPage
                 CheckWin();
             };
 
-            // сетка: 4 колонки
             int row = i / 4;
-            int col = i % 4;
+            int col = i % 4; 
 
             GameGrid.Add(btn, col, row);
             game.Cards.Add(card);
@@ -60,7 +59,6 @@ public partial class MainPage : ContentPage
         ScoreLabel.Text = $"Score: {player.Score}";
     }
 
-    // 🏆 WIN CHECK
     async void CheckWin()
     {
         bool allMatched = game.Cards.All(c => c.IsMatched);
