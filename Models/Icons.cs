@@ -9,7 +9,7 @@ public static class Icons
         Preferences.Set("icons", name);
     }
 
-    public static string Load()
+    public static string Load() 
     {
         return Preferences.Get("icons", "Animals");
     }

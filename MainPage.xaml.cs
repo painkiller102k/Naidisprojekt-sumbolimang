@@ -67,7 +67,7 @@ public partial class MainPage : ContentPage
             return;
 
         bool again = await DisplayAlertAsync(
-            "Võit!",
+            "!",
             $"Sul on {player.Score} punkti.\nKas soovid uuesti mängida?",
             "Jah",
             "Ei");
